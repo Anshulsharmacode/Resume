@@ -16,7 +16,6 @@ function PortfolioIntro() {
           Anshul Sharma
         </h1>
 
-        
         <Typewriter
           textStyle={{
             fontFamily: 'Roboto, sans-serif',
@@ -33,7 +32,7 @@ function PortfolioIntro() {
           ]}
           multiTextDelay={2000}  
           typeSpeed={100}         
-          deleteSpeed={50}
+          deleteSpeed={30}  // Adjusted delete speed for smoother delete
           multiTextLoop={true}   
         />
 
@@ -41,13 +40,13 @@ function PortfolioIntro() {
           <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
             <FaLinkedin className="text-3xl md:text-4xl text-gray-500 hover:text-blue-600 hover:scale-110 transition-all duration-300 ease-in-out shadow-lg hover:shadow-blue-500/50" />
           </a>
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://github/Anshulsharma8386.com" target="_blank" rel="noopener noreferrer">
             <FaGithub className="text-3xl md:text-4xl text-gray-500 hover:text-gray-400 hover:scale-110 transition-all duration-300 ease-in-out shadow-lg hover:shadow-gray-500/50" />
           </a>
-          <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://twitter.com/@Anshulsh8386" target="_blank" rel="noopener noreferrer">
             <FaTwitter className="text-3xl md:text-4xl text-gray-500 hover:text-blue-500 hover:scale-110 transition-all duration-300 ease-in-out shadow-lg hover:shadow-blue-500/50" />
           </a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://instagram.com/anshulsharma5353" target="_blank" rel="noopener noreferrer">
             <FaInstagram className="text-3xl md:text-4xl text-gray-500 hover:text-pink-500 hover:scale-110 transition-all duration-300 ease-in-out shadow-lg hover:shadow-pink-500/50" />
           </a>
           <a href="mailto:anshulsharma8386@gmail.com" target="_blank" rel="noopener noreferrer">

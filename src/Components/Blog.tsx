@@ -37,7 +37,7 @@ function Blog() {
   if (error) return <div>Error loading blog posts.</div>;
 
   return (
-    <div className="min-h-screen w-screen bg-gray-100 text-gray-900 flex flex-col justify-center items-center px-6 md:px-20 lg:px-40 py-16 space-y-12">
+    <div className="min-h-screen w-screen mt-14 bg-gray-100 text-gray-900 flex flex-col justify-center items-center px-6 md:px-20 lg:px-40 py-16 space-y-12">
       {/* Section Title */}
       <h2 className="text-5xl font-bold mb-8 text-gray-800 animate-fade-in">Blog</h2>
 

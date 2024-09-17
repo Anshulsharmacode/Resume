@@ -8,12 +8,30 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #0000;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --primary-color: #60bfa6;
+}
+
+.dark {
+  --bg-color: #0000;
+  --text-color: #ffffff;
+  --primary-color: #60a5fa;
+}
+
+.inverted {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+.inverted img {
+  filter: invert(1) hue-rotate(180deg);
 }
 
 a {
@@ -31,6 +49,8 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  background-color: var(--bg-color);
+  color: var(--text-color);
 }
 
 h1 {

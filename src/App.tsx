@@ -1,71 +1,69 @@
-// src/App.tsx
-import React from 'react';
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import React, { useState, useEffect } from 'react';
 import Navbar from './Components/Navbar';
-import Footer from './Components/Fotter';
+import Footer from './Components/Footer';
 import PortfolioIntro from './Components/Hero';
-import Experience from './Components/Exprince';
+import Experience from './Components/Experience';
 import Skill from './Components/Skill';
 import Project from './Components/Project';
 import Blog from './Components/Blog';
 import AboutMe from './Components/About';
-import Contact from './Components/Contacat';
-import Education from "./Components/Edudction"
-const App: React.FC = () => {
-  const location = useLocation();
+import Contact from './Components/Contact';
+import Education from "./Components/Education";
 
-  // Determine the type of transition based on the current route
-  const getTransitionEffect = (path: string) => {
-    if (path === '/project' || path === '/blog' || path === '/contact') {
-      return {
-        initial: { opacity: 0, y: 100 },
-        animate: { opacity: 1, y: 0 },
-        exit: { opacity: 0, y: 100 },
-      };
-    }
-    return {
-      initial: { opacity: 0, y: -100 },
-      animate: { opacity: 1, y: 0 },
-      exit: { opacity: 0, y: 100 },
-    };
+const App: React.FC = () => {
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [currentPage, setCurrentPage] = useState('main');
+  const [isInverted, setIsInverted] = useState(false);
+
+  const toggleTheme = () => {
+    setTheme(prevTheme => prevTheme === 'light' ? 'dark' : 'light');
   };
 
-  const transitionEffect = getTransitionEffect(location.pathname);
+  const toggleInversion = () => {
+    setIsInverted(prev => !prev);
+  };
+
+  useEffect(() => {
+    document.body.className = `${theme} ${isInverted ? 'inverted' : ''}`;
+  }, [theme, isInverted]);
+
+  const renderContent = () => {
+    switch (currentPage) {
+      case 'blog':
+        return <Blog />;
+      case 'about':
+        return <AboutMe />;
+      case 'contact':
+        return <Contact />;
+      case 'projects':
+        return <Project />;
+      default:
+        return (
+          <>
+            <section id="home"><PortfolioIntro /></section>
+            <section id="experience"><Experience /></section>
+            <section id="skills"><Skill /></section>
+            {/* <section id="projects"><Project /></section> */}
+            <section id="education"><Education /></section>
+          </>
+        );
+    }
+  };
 
   return (
-    <>
-      <Navbar />
-      
+    <div className="app">
+      <Navbar 
+        theme={theme} 
+        toggleTheme={toggleTheme} 
+        setCurrentPage={setCurrentPage}
+        isInverted={isInverted}
+        toggleInversion={toggleInversion}
+      />
       <div className="main-content">
-        <AnimatePresence>
-          <motion.div
-            key={location.pathname}
-            initial={transitionEffect.initial}
-            animate={transitionEffect.animate}
-            exit={transitionEffect.exit}
-            transition={{ duration: 0.5 }}
-            className="page"
-          >
-            <Routes location={location} key={location.pathname}>
-              <Route path="" element={
-                <>
-                  <PortfolioIntro />
-                  <Experience />
-                  <Skill />
-                  <AboutMe />
-                  <Education/>
-                </>
-              } />
-              <Route path="/project" element={<Project />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/contact" element={<Contact />} />
-            </Routes>
-          </motion.div>
-        </AnimatePresence>
+        {renderContent()}
       </div>
       <Footer />
-    </>
+    </div>
   );
 }
 
